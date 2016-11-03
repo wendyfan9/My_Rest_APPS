@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    	var MyComponent = React.createClass({
+    		handleClick: function(){
+    			this.refs.myTextInput.focus();
+    		},
+    		render: function(){
+    			return(
+    				<div>
+    					<input type="text" ref="myTextInput" />
+    					<input type="button" value="Focus the text input" onClick={this.handleClick} />
+    				</div>
+    			);
+    		}
+    	});
+
+    	ReactDOM.render(
+    		<MyComponent />,
+    		document.getElementById('example')
+    	);   	
+    </script>
+  </body>
+</html>
+
+<!--When you need to reference a DOM node in a component. React gives you the ref attribute to find -->
+
+<!-- The desired DOM node should have a ref attribute, and this.refs.[refName] would return the corresponding DOM node. Please be mindful that you could do that only after this component has been mounted into the DOM, otherwise you get null. -->
